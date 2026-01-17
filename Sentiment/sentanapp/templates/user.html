@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}User Registration - Sentiment Analysis{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow p-4">
+            <h2 class="text-center mb-4 text-primary">User Registration</h2>
+            <form action="/useraction/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" pattern="[A-Z  a-z]+" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Address</label>
+                    <textarea class="form-control" name="address" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Gender</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" value="M" required>
+                            <label class="form-check-label">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" value="F" required>
+                            <label class="form-check-label">Female</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Contact No</label>
+                    <input type="text" class="form-control" name="contact" pattern="[0-9]{10}" maxlength="10" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" required>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Place</label>
+                        <input type="text" class="form-control" name="place" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">District</label>
+                        <select class="form-select" name="district" required>
+                            <option>Thiruvananthapuram</option>
+                            <option>Kollam</option>
+                            <option>Pathanamthitta</option>
+                            <option>Alapuzha</option>
+                            <option>Kottayam</option>
+                            <option>Idukki</option>
+                            <option>Ernakulam</option>
+                            <option>Thrissur</option>
+                            <option>Wayanad</option>
+                            <option>Kozhikode</option>
+                            <option>Kannur</option>
+                            <option>Palakad</option>
+                            <option>Malappuram</option>
+                            <option>Kasargod</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-grid mt-3">
+                    <input type="submit" class="btn btn-primary" name="submit" value="Register">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

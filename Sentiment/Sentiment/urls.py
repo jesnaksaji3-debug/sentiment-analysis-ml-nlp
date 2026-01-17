@@ -1,0 +1,45 @@
+"""Sentiment URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/4.0/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path,include
+from sentanapp.views import *
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic import TemplateView
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('',index,name="index"),
+    path('index/',index,name="index"),
+    path('user/',user,name="user"),
+    path('useraction/',useraction,name="useraction"),
+    path('viewuser/',viewuser,name="viewuser"),
+    path('login/',login,name="login"),
+    path('adminhome/',adminhome,name="adminhome"),
+    path('userhome/',userhome,name="userhome"),
+    path('loginaction/',loginaction,name="loginaction"),
+    path('deleteUser/',deleteUser,name="deleteUser"),
+    path('review/',review,name="review"),
+    path('reviewact/',reviewact,name="reviewact"),
+    
+]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+urlpatterns += staticfiles_urlpatterns()
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+    urlpatterns += staticfiles_urlpatterns()
+    

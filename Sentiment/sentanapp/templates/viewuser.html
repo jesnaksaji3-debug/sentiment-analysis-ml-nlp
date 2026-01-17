@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}View Users - Sentiment Analysis{% endblock %}
+{% block content %}
+<div class="mb-3">
+    <a href="/adminhome" class="btn btn-secondary">&larr; Back to Home</a>
+    <a href="/index" class="btn btn-outline-danger float-end">Log Out</a>
+</div>
+<h2 class="mb-4">Registered Users</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Contact</th>
+                <th>Place</th>
+                <th>District</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in usr %}
+            <tr>
+                <td>{{s.name}}</td>
+                <td>{{s.address}}</td>
+                <td>{{s.email}}</td>
+                <td>{{s.gender}}</td>
+                <td>{{s.contact}}</td>
+                <td>{{s.place}}</td>
+                <td>{{s.district}}</td>
+                <td><a href="/deleteUser?uid={{s.uid}}" class="btn btn-sm btn-danger">Remove</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
